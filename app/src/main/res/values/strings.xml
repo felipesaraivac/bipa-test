@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">bipa</string>
+    <string name="screen_ranking">Ranking</string>
+    <string name="screen_in_progress">In Progress</string>
+    <string name="btc_value">%s BTC</string>
+
+</resources>
