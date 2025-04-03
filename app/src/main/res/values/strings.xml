@@ -4,5 +4,6 @@
     <string name="screen_in_progress">In Progress</string>
     <string name="last_update">Last update: %s</string>
     <string name="btc_value">available: %s BTC</string>
+    <string name="data_could_not_be_loaded">Data could not be loaded.</string>
 
 </resources>

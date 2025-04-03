@@ -4,4 +4,5 @@
     <string name="screen_in_progress">Tela em construção</string>
     <string name="last_update">Última atualização: %s</string>
     <string name="btc_value">disponível: %s BTC</string>
+    <string name="data_could_not_be_loaded">Não foi possível carregar os dados.</string>
 </resources>
