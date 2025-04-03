@@ -4,5 +4,6 @@ import com.saraiva.bipa.domain.entity.NodeEntity
 
 interface Repository {
 
-    fun getNodes(): List<NodeEntity>
+    suspend fun getNodes(): List<NodeEntity>
+
 }
