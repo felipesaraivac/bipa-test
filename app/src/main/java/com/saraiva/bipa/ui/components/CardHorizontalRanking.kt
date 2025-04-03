@@ -1,7 +1,6 @@
 package com.saraiva.bipa.ui.components
 
 import android.icu.text.DecimalFormat
-import android.icu.text.NumberFormat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -52,9 +51,7 @@ fun CardHorizontalRanking(
                 },
             )
         }
-        Box(modifier = Modifier.height(MaterialTheme.spacing.small)) {
-
-        }
+        Box(modifier = Modifier.height(MaterialTheme.spacing.small))
     }
 }
 
