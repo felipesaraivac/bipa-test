@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">bipa</string>
     <string name="screen_in_progress">Tela em construção</string>
+    <string name="last_update">Última atualização: %s</string>
+    <string name="btc_value">disponível: %s BTC</string>
 </resources>

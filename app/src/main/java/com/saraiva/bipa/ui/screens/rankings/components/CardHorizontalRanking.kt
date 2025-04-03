@@ -1,6 +1,5 @@
-package com.saraiva.bipa.ui.components
+package com.saraiva.bipa.ui.screens.rankings.components
 
-import android.icu.text.DecimalFormat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,18 +11,24 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.saraiva.bipa.R
-import com.saraiva.bipa.core.Constants
 import com.saraiva.bipa.domain.entity.NodeEntity
+import com.saraiva.bipa.ui.screens.util.toBtc
+import com.saraiva.bipa.ui.screens.util.toUTC
+import com.saraiva.bipa.ui.theme.gain
 import com.saraiva.bipa.ui.theme.spacing
+import java.util.Locale
 
 @Composable
 fun CardHorizontalRanking(
@@ -37,18 +42,46 @@ fun CardHorizontalRanking(
                 .fillMaxWidth(.9f)
                 .fillMaxHeight(),
             shape = RoundedCornerShape(MaterialTheme.spacing.small),
-            CardDefaults.outlinedCardColors(),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = MaterialTheme.spacing.extraSmall
+            ),
+            border = CardDefaults.outlinedCardBorder(enabled = true)
         ) {
 
             ListItem(
                 headlineContent = { Text(node.alias) },
-                overlineContent = { Text(node.capacity.toString()) },
-            trailingContent = {
-                Text(stringResource(R.string.btc_value, node.capacity.toBtc()))
-            },
-                leadingContent = {
-                    CharRounded(text = position.toString())
+                overlineContent = {
+                    Text(
+                        stringResource(
+                            R.string.last_update,
+                            node.updatedAt.toUTC()
+                        )
+                    )
                 },
+                trailingContent = {
+                    Text(stringResource(R.string.btc_value, node.capacity.toBtc()), color = MaterialTheme.colorScheme.gain)
+                },
+                supportingContent = {
+                    val country = node.country.run {
+                        getOrDefault("pt-BR", get("en"))
+                    }
+                    val city = node.city.run {
+                        getOrDefault("pt-BR", get("en"))
+                    }
+                    when {
+                        country != null && city != null -> {
+                            Text("$city, $country", style = MaterialTheme.typography.labelSmall)
+                        }
+
+                        city != null -> {
+                            Text(city, style = MaterialTheme.typography.labelSmall)
+                        }
+
+                        country != null -> {
+                            Text(country, style = MaterialTheme.typography.labelSmall)
+                        }
+                    }
+                }
             )
         }
         Box(modifier = Modifier.height(MaterialTheme.spacing.small))
@@ -76,23 +109,4 @@ fun CharRounded(
             style = MaterialTheme.typography.titleMedium
         )
     }
-}
-//
-//@Preview
-//@Composable
-//private fun CardHorizontalStockPreview() {
-//    TfcTheme {
-//        CardHorizontalRanking(user = FakeDataSource.user, position = 1)
-//    }
-//}
-
-
-
-fun Long.toBtc(): String {
-    val satsToBtc = toBigDecimal().divide(Constants.BTC_SATS.toBigDecimal())
-
-    if (satsToBtc.compareTo(1.toBigDecimal()) > 0)
-        return DecimalFormat("0.00").format(satsToBtc)
-
-    return DecimalFormat("0.00000000").format(satsToBtc)
 }

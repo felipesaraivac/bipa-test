@@ -28,7 +28,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.saraiva.bipa.R
 import com.saraiva.bipa.core.utils.State
 import com.saraiva.bipa.domain.entity.NodeEntity
-import com.saraiva.bipa.ui.components.CardHorizontalRanking
+import com.saraiva.bipa.ui.screens.rankings.components.CardHorizontalRanking
 import com.saraiva.bipa.ui.components.ProgressBar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -50,7 +50,7 @@ fun RankingListScreen(
                 title = {
                     Text(stringResource(R.string.screen_ranking))
                 },
-                navigationIcon = {
+                actions = {
                     IconButton(onClick = { viewModel.sort() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Default.Sort,

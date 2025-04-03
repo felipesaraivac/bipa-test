@@ -40,6 +40,13 @@ android {
     buildFeatures {
         compose=true
     }
+
+    packaging {
+        resources {
+            merges += "META-INF/**"
+        }
+    }
+
 }
 
 dependencies {
