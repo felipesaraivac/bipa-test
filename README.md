@@ -1,17 +1,17 @@
 # bipa-test
 This is an app that fetches a list of nodes of a bitcoin network and shows to the user
 ## Build tools & versions used
-Compile SDK version: 35
-Build tools version: 35.0.0
-Gradle version: 8.12
-Kotlin version: 2.0.20
-Java version: 17
+Compile SDK version: 35  
+Build tools version: 35.0.0  
+Gradle version: 8.12  
+Kotlin version: 2.0.20  
+Java version: 17  
 
 ## Steps to run the app
 
-Import the project in Android Studio
-Gradle sync
-Run the app
+1. Import the project in Android Studio  
+2. Gradle sync  
+3. Build and run the app 
 
 ## What areas of the app did you focus on?
 
